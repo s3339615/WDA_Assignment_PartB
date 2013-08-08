@@ -137,11 +137,12 @@
                         <th>Winery</th>
                         <th>Region</th>
                         <th>Cost in<br/>Inventory</th>
-                        <th>Available<br/>Number</th>
-                        <th>Stock<br/>Sold</th>
-                        <th>Revenue</tr>
+                        <th>Number of<br/>Bottles Available</th>
+                        <th>Total<br/>Stock Sold</th>
+                        <th>Total<br/>Sales Revenue</tr>
                     <?php
-                        while($row = mysql_fetch_row($result)) {
+                        while($row = mysql_fetch_row($result)) 
+						{
                     ?>
                     <tr>
                         <td><?php echo $row[1]; ?></td>
