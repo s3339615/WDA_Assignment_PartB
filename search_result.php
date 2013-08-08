@@ -27,7 +27,7 @@
     
     if($flag == 'all') 
 	{
-        $query .= ' GROUP BY items.wine_id
+        $query = ' GROUP BY items.wine_id
                     ORDER BY wine_name, year
                     LIMIT 200';
     }
@@ -38,51 +38,51 @@
         if($winename != '') 
 		{
             $winename = str_replace("'", "''", $winename);
-            $query .= " AND wine.wine_name LIKE '%$winename%'";
+            $query = " AND wine.wine_name LIKE '%$winename%'";
         }
         if($wineryname != '') 
 		{
             $wineryname = str_replace("'", "''", $wineryname);
-            $query .= " AND winery_name LIKE '%$wineryname%'";
+            $query = " AND winery_name LIKE '%$wineryname%'";
         }
         if($region != 1) 
 		{
-            $query .= " AND region.region_id = $region";
+            $query = " AND region.region_id = $region";
         }
         if($grapeVariety != 0) 
 		{
-            $query .= " AND variety_id = $grapeVariety";
+            $query = " AND variety_id = $grapeVariety";
         }
         if(($yearFrom != 0) && ($yearTo != 0)) 
 		{
-            $query .= " AND year >= $yearFrom AND year <= $yearTo";
+            $query = " AND year >= $yearFrom AND year <= $yearTo";
         } 
 		else if($yearFrom != 0) 
 		{
-            $query .= " AND year >= $yearFrom";
+            $query = " AND year >= $yearFrom";
         } 
 		else if($yearTo != 0) 
 		{
-            $query .= " AND year <= $yearTo";
+            $query = " AND year <= $yearTo";
         }
         if($min_num_instock != 0) 
 		{
-            $query .= " AND on_hand >= $min_num_instock";
+            $query = " AND on_hand >= $min_num_instock";
         }
         if($min_cost != 0) {
-            $query .= " AND cost >= $min_cost";
+            $query = " AND cost >= $min_cost";
         }
         if($max_cost != 0) 
 		{
-            $query .= " AND cost <= $max_cost";
+            $query = " AND cost <= $max_cost";
         }
         if($min_num_ordered != 0) 
 		{
-            $query .= " GROUP BY items.wine_id
+            $query = " GROUP BY items.wine_id
                         HAVING qty >= $min_num_ordered
                         ORDER BY wine_name, year LIMIT 200";
         }
-        else $query .= ' GROUP BY items.wine_id
+        else $query = ' GROUP BY items.wine_id
                          ORDER BY wine_name, year LIMIT 200';
         
     }
