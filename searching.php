@@ -12,7 +12,7 @@
 		exit;
 	}
 	
-	echo 'Connected to mysql <br />';
+	//echo 'Connected to mysql <br />'; check whether connect to mysql
 	
 	if(!mysql_select_db(DB_NAME, $dbconn)) 
 	{
@@ -21,22 +21,22 @@
 		exit;
 	}
 	
-	echo 'Connected to database ' . DB_NAME . '\n';
+	//echo 'Connected to database ' . DB_NAME . '\n'; //check whether connect to database
+	
+	/*query for get the grape varities from database*/
+    $query = 'SELECT * FROM grape_variety ORDER BY variety';
+    $varieties = mysql_query($query, $dbconn);
 	
 	/*query for get the regions from database*/
     $query = 'SELECT * FROM region ORDER BY region_name';//Get all regions
     $regions = mysql_query($query, $dbconn);
-	
-    /*query for get the grape varities from database*/
-    $query = 'SELECT * FROM grape_variety ORDER BY variety';
-    $varieties = mysql_query($query, $dbconn);
 	
     /*query for get the years from database*/
     $yearArray = array();
     $query = 'SELECT DISTINCT year FROM wine ORDER BY year';
     $years = mysql_query($query, $dbconn);
     $x = 0;
-    while($row = mysql_fetch_row($years)) 
+    while($row = mysql_fetch_row($years))
 	{
         $yearArray[$x] = $row[0];
         $x++;
@@ -46,10 +46,12 @@
 <body>
 
 <div>
-        <div id="header">
-            <div id="banner"><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Screen of Winestore</h3></I></div>
-        </div>
-        
+	<!--Header Here-->
+    <div>
+        <div><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Screen of Winestore</h3></I></div>
+    </div>
+    
+	
     <div class="vgap"></div>
         
         <div id="body">
