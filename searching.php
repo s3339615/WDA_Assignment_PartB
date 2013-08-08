@@ -55,7 +55,7 @@
         <div id="body">
 			<!-- GET method for search_result.php -->
             <form action="search_result.php" method="get" id="searchForm" name="searchForm">
-            <input type="hidden" id="flag" name="flag" />
+            <input type="hidden" id="criteria" name="criteria" />
 			
             <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
 				<!-- Table Row 1 -->
