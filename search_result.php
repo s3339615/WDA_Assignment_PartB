@@ -172,4 +172,8 @@
         </div>
     </div>
 </body>
+<?php
+    mysql_close($dbconn);
+    echo error_get_last();
+?>
 </html>
