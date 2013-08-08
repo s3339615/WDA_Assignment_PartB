@@ -25,46 +25,59 @@
                     wine.wine_id = items.wine_id AND
                     wine.wine_id = wine_variety.wine_id';
     
-    if($flag == 'all') {// Query all data
+    if($flag == 'all') 
+	{// Query all data
         $query .= ' GROUP BY items.wine_id
                     ORDER BY wine_name, year
                     LIMIT 200';
     }
-    else {// Query part of data
+    else 
+	{// Query part of data
         /*
             Piece together the SQL statement
         */
-        if($winename != '') {
+        if($winename != '') 
+		{
             $winename = str_replace("'", "''", $winename);
             $query .= " AND wine.wine_name LIKE '%$winename%'";
         }
-        if($wineryname != '') {
+        if($wineryname != '') 
+		{
             $wineryname = str_replace("'", "''", $wineryname);
             $query .= " AND winery_name LIKE '%$wineryname%'";
         }
-        if($region != 1) {
+        if($region != 1) 
+		{
             $query .= " AND region.region_id = $region";
         }
-        if($grapeVariety != 0) {
+        if($grapeVariety != 0) 
+		{
             $query .= " AND variety_id = $grapeVariety";
         }
-        if(($yearFrom != 0) && ($yearTo != 0)) {
+        if(($yearFrom != 0) && ($yearTo != 0)) 
+		{
             $query .= " AND year >= $yearFrom AND year <= $yearTo";
-        } else if($yearFrom != 0) {
+        } else if($yearFrom != 0) 
+		{
             $query .= " AND year >= $yearFrom";
-        } else if($yearTo != 0) {
+        } else if($yearTo != 0) 
+		{
             $query .= " AND year <= $yearTo";
         }
-        if($min_num_instock != 0) {
+        if($min_num_instock != 0) 
+		{
             $query .= " AND on_hand >= $min_num_instock";
         }
-        if($min_cost != 0) {
+        if($min_cost != 0) 
+		{
             $query .= " AND cost >= $min_cost";
         }
-        if($max_cost != 0) {
+        if($max_cost != 0) 
+		{
             $query .= " AND cost <= $max_cost";
         }
-        if($min_num_ordered != 0) {
+        if($min_num_ordered != 0) 
+		{
             $query .= " GROUP BY items.wine_id
                         HAVING qty >= $min_num_ordered
                         ORDER BY wine_name, year LIMIT 200";
@@ -76,12 +89,26 @@
     }
     
     require_once('database.php');
-    @ $dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW);
-    if(!$dbconn) exit;
-    mysql_select_db(DB_NAME, $dbconn);
+	if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW))
+	{
+		echo 'Could not connect to mysql on ' . DB_HOST . '\n';
+		exit;
+	}
+	
+	echo 'Connected to mysql <br />';
+	
+	if(!mysql_select_db(DB_NAME, $dbconn)) 
+	{
+		echo 'Could not user database ' . DB_NAME . '\n';
+		echo mysql_error() . '\n';
+		exit;
+	}
+	
+	echo 'Connected to database ' . DB_NAME . '\n';
     
     $result = mysql_query($query, $dbconn);
-    if(!$result) {
+    if(!$result) 
+	{
         echo "Wrong query string! [$query]";
         exit;
     }
@@ -101,7 +128,8 @@
             <div id="result">
                 <?php
                     if(!$result) echo "<div class='noResult'>No records match your search criteria.</div>";
-                    else {
+                    else 
+					{
                 ?>
                 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
                     <tr>
