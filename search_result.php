@@ -5,7 +5,7 @@
 </head>
 
 <?php
-    $flag = $_GET["flag"];//all = no criteria; some = some criterias
+    $criteria = $_GET["criteria"];//all = no criteria; some = some criterias
     $winename = $_GET["winename"];
     $wineryname = $_GET["wineryname"];
     $region = $_GET["region"];
@@ -25,7 +25,7 @@
                     wine.wine_id = items.wine_id AND
                     wine.wine_id = wine_variety.wine_id';
     
-    if($flag == 'all') 
+    if($criteria == 'all') 
 	{// Query all data
         $query .= ' GROUP BY items.wine_id
                     ORDER BY wine_name, year
@@ -94,8 +94,7 @@
 		echo 'Could not connect to mysql on ' . DB_HOST . '\n';
 		exit;
 	}
-	
-	echo 'Connected to mysql <br />';
+	//echo 'Connected to mysql <br />';
 	
 	if(!mysql_select_db(DB_NAME, $dbconn)) 
 	{
@@ -103,8 +102,7 @@
 		echo mysql_error() . '\n';
 		exit;
 	}
-	
-	echo 'Connected to database ' . DB_NAME . '\n';
+	//echo 'Connected to database ' . DB_NAME . '\n';
     
     $result = mysql_query($query, $dbconn);
     if(!$result) 
