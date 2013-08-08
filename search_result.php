@@ -5,7 +5,7 @@
 </head>
 
 <?php
-    $flag = $_GET["flag"];
+    $flag = $_GET["flag"];//all = no criteria; some = some criterias
     $winename = $_GET["winename"];
     $wineryname = $_GET["wineryname"];
     $region = $_GET["region"];
@@ -25,66 +25,54 @@
                     wine.wine_id = items.wine_id AND
                     wine.wine_id = wine_variety.wine_id';
     
-    if($flag == 'all') 
-	{
-        $query = ' GROUP BY items.wine_id
+    if($flag == 'all') {// Query all data
+        $query .= ' GROUP BY items.wine_id
                     ORDER BY wine_name, year
                     LIMIT 200';
     }
     else {// Query part of data
         /*
             Piece together the SQL statement
-        
-        if($winename != '') 
-		{
+        */
+        if($winename != '') {
             $winename = str_replace("'", "''", $winename);
-            $query = " AND wine.wine_name LIKE '%$winename%'";
+            $query .= " AND wine.wine_name LIKE '%$winename%'";
         }
-        if($wineryname != '') 
-		{
+        if($wineryname != '') {
             $wineryname = str_replace("'", "''", $wineryname);
-            $query = " AND winery_name LIKE '%$wineryname%'";
+            $query .= " AND winery_name LIKE '%$wineryname%'";
         }
-        if($region != 1) 
-		{
-            $query = " AND region.region_id = $region";
+        if($region != 1) {
+            $query .= " AND region.region_id = $region";
         }
-        if($grapeVariety != 0) 
-		{
-            $query = " AND variety_id = $grapeVariety";
+        if($grapeVariety != 0) {
+            $query .= " AND variety_id = $grapeVariety";
         }
-        if(($yearFrom != 0) && ($yearTo != 0)) 
-		{
-            $query = " AND year >= $yearFrom AND year <= $yearTo";
-        } 
-		else if($yearFrom != 0) 
-		{
-            $query = " AND year >= $yearFrom";
-        } 
-		else if($yearTo != 0) 
-		{
-            $query = " AND year <= $yearTo";
+        if(($yearFrom != 0) && ($yearTo != 0)) {
+            $query .= " AND year >= $yearFrom AND year <= $yearTo";
+        } else if($yearFrom != 0) {
+            $query .= " AND year >= $yearFrom";
+        } else if($yearTo != 0) {
+            $query .= " AND year <= $yearTo";
         }
-        if($min_num_instock != 0) 
-		{
-            $query = " AND on_hand >= $min_num_instock";
+        if($min_num_instock != 0) {
+            $query .= " AND on_hand >= $min_num_instock";
         }
         if($min_cost != 0) {
-            $query = " AND cost >= $min_cost";
+            $query .= " AND cost >= $min_cost";
         }
-        if($max_cost != 0) 
-		{
-            $query = " AND cost <= $max_cost";
+        if($max_cost != 0) {
+            $query .= " AND cost <= $max_cost";
         }
-        if($min_num_ordered != 0) 
-		{
-            $query = " GROUP BY items.wine_id
+        if($min_num_ordered != 0) {
+            $query .= " GROUP BY items.wine_id
                         HAVING qty >= $min_num_ordered
                         ORDER BY wine_name, year LIMIT 200";
         }
-        else $query = ' GROUP BY items.wine_id
+        else $query .= ' GROUP BY items.wine_id
                          ORDER BY wine_name, year LIMIT 200';
-        */
+        
+        //echo $query;
     }
     
     require_once('database.php');
@@ -141,7 +129,7 @@
                             $str = "";
                             while($variety = mysql_fetch_row($varieties)) 
 							{
-                                $str .= "$variety[0], ";
+                                $str = "$variety[0], ";
                             }
                             //$str = substr($str, 0, strlen($str));
                             echo substr($str, 0, strlen($str)-2);
