@@ -34,7 +34,7 @@
     else {// Query part of data
         /*
             Piece together the SQL statement
-        */
+        
         if($winename != '') 
 		{
             $winename = str_replace("'", "''", $winename);
@@ -84,7 +84,7 @@
         }
         else $query = ' GROUP BY items.wine_id
                          ORDER BY wine_name, year LIMIT 200';
-        
+        */
     }
     
     require_once('database.php');
