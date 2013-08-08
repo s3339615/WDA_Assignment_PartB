@@ -87,7 +87,7 @@
         
     }
     
-    require_once('db.php');
+    require_once('database.php');
     @ $dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW);
     if(!$dbconn) exit;
     mysql_select_db(DB_NAME, $dbconn);
