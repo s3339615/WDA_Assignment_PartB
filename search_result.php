@@ -108,7 +108,7 @@
         
         <div id="body">
         	<div id="prompt"><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result Display</h3></I></div>
-            <div id="navi"><a href="search.php" title="Back">Back to Search Page</a></div>
+            <div id="navi"><a href="searching.php" title="Back">Back to Search Page</a></div>
             <div class="clear"></div>
             <div id="result">
                 <?php
