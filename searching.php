@@ -25,20 +25,20 @@
 	
 	/*query for get the grape varities from database*/
     $query = 'SELECT * FROM grape_variety ORDER BY variety';
-    $grapevariety = mysql_query($query, $dbconn);
+    $varieties = mysql_query($query, $dbconn);
 	
 	/*query for get the regions from database*/
     $query = 'SELECT * FROM region ORDER BY region_name';//Get all regions
     $regions = mysql_query($query, $dbconn);
 	
     /*query for get the years from database*/
+    $yearArray = array();
     $query = 'SELECT DISTINCT year FROM wine ORDER BY year';
-	$aryYear = ary();
     $years = mysql_query($query, $dbconn);
     $x = 0;
     while($row = mysql_fetch_row($years))
 	{
-        $aryYear[$x] = $row[0];
+        $yearArray[$x] = $row[0];
         $x++;
     }
 ?>
@@ -89,7 +89,7 @@
                     <select name="grapeVariety" id="grapeVariety">
                         <option value="0" selected="selected"> Select Variery </option>
                         <?php
-                            while($row = mysql_fetch_row($grapevariety)) 
+                            while($row = mysql_fetch_row($varieties)) 
 							{
                                 echo "<option value=\"$row[0]\">$row[1]</option>\n";
                             }
@@ -104,9 +104,9 @@
                     <select name="yearFrom" id="yearFrom">
                         <option value="0" selected="selected"> Select Year </option>
                         <?php
-                            for($x=0; $x<numCount($aryYear); $x++) 
+                            for($i=0; $i<count($yearArray); $i++) 
 							{
-                                echo "<option value=\"$aryYear[$x]\">$aryYear[$x]</option>\n";
+                                echo "<option value=\"$yearArray[$i]\">$yearArray[$i]</option>\n";
                             }
                         ?>
                     </select>
@@ -114,9 +114,9 @@
                     <select name="yearTo" id="yearTo">
                         <option value="0" selected="selected"> Select Year </option>
                         <?php
-                            for($x=0; $x<numCount($aryYear); $x++) 
+                            for($i=0; $i<count($yearArray); $i++) 
 							{
-                                echo "<option value=\"$aryYear[$x]\">$aryYear[$x]</option>\n";
+                                echo "<option value=\"$yearArray[$i]\">$yearArray[$i]</option>\n";
                             }
                         ?>
                     </select>
