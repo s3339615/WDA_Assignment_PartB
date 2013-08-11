@@ -60,13 +60,13 @@
                 <tr>
                     <td bgcolor="#D8CEF6"><strong>1.&nbsp;Wine Name</strong></td>
                     <td bgcolor="#F2EFFB">
-                    <input type="text" name="winename" id="winename" class="txt" /></td>
+                    <input type="text" name="nameOfWine" id="nameOfWine" class="txt" /></td>
                 </tr>
 				<!-- Table Row 2 -->
                 <tr>
                     <td><strong>2.&nbsp;Winery Name</strong></td>
                     <td>
-                    <input type="text" name="wineryname" id="wineryname" class="txt" /></td>
+                    <input type="text" name="nameOfWinery" id="nameOfWinery" class="txt" /></td>
                 </tr>
 				<!-- Table Row 3 -->
                 <tr>
@@ -125,12 +125,12 @@
 				<!-- Table Row 6 -->
                 <tr>
                     <td><strong>6.&nbsp;Min Number in Stock</strong></td>
-                    <td><input type="text" name="min_num_instock" id="min_num_instock" class="number" /></td>
+                    <td><input type="text" name="num_of_min_in_stock" id="num_of_min_in_stock" class="number" /></td>
                 </tr>
 				<!-- Table Row 7 -->
                 <tr>
                     <td bgcolor="#D8CEF6"><strong>7.&nbsp;Min Number Ordered</strong></td>
-                    <td bgcolor="#F2EFFB"><input type="text" name="min_num_ordered" id="min_num_ordered" class="number" /></td>
+                    <td bgcolor="#F2EFFB"><input type="text" name="num_of_min_order" id="num_of_min_order" class="number" /></td>
                 </tr>
 				<!-- Table Row 8 -->
                 <tr>
