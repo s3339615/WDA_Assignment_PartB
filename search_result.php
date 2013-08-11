@@ -116,20 +116,16 @@
 <body>
 
 <div>
-        
-    <div class="vgap"></div>
-        
-        <div id="body">
-        	<div id="prompt"><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result Display</h3></I></div>
-            <div id="navi"><a href="searching.php" title="Back">Back to Search Page</a></div>
-            <div class="clear"></div>
-            <div id="result">
+        <div>
+        	<div><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result Display</h3></I></div>
+            <div><a href="searching.php" title="Back">Back to Search Page</a></div>
+            <div>
                 <?php
                     if(!$result) echo "<div class='noResult'>No records match your search criteria.</div>";
                     else 
 					{
                 ?>
-                <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <table>
                     <tr>
                         <th>Wine Name</th>
                         <th>Grape Variety</th>
@@ -178,12 +174,6 @@
                     }
                 ?>
             </div>
-        </div>
-        
-        <div class="vgap"></div>
-        
-        <div id="footer">
-            &copy; Ye SHEN s3339615
         </div>
     </div>
 </body>
