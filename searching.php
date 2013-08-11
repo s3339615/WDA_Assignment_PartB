@@ -146,14 +146,10 @@
             </table>
             </form>
         </div>       
-        
-        <div>
-            &copy; Ye SHEN s3339615
-        </div>
     </div>
 </body>
-
-
-
-
+<?php
+    mysql_close($dbconn);
+    echo error_get_last();
+?>
 </html>
