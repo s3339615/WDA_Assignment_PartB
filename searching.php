@@ -49,35 +49,31 @@
 	<!--Header Here-->
     <div>
         <div><I><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Screen of Winestore</h3></I></div>
-    </div>
-    
-	
-    <div class="vgap"></div>
-        
-        <div id="body">
+    </div> 
+        <div>
 			<!-- GET method for search_result.php -->
-            <form action="search_result.php" method="get" id="searchForm" name="searchForm">
+            <form action="search_result.php" method="get" id="searchResult" name="searchResult">
             <input type="hidden" id="criteria" name="criteria" />
 			
-            <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <table>
 				<!-- Table Row 1 -->
                 <tr>
-                    <td width="160" height="40" bgcolor="#CED8F6"><strong>&nbsp;Wine Name</strong></td>
-                    <td height="40" bgcolor="#CED8F6">
+                    <td bgcolor="#D8CEF6"><strong>1.&nbsp;Wine Name</strong></td>
+                    <td bgcolor="#F2EFFB">
                     <input type="text" name="winename" id="winename" class="txt" /></td>
                 </tr>
 				<!-- Table Row 2 -->
                 <tr>
-                    <td width="160" height="40"><strong>&nbsp;Winery Name</strong></td>
-                    <td height="40">
+                    <td><strong>2.&nbsp;Winery Name</strong></td>
+                    <td>
                     <input type="text" name="wineryname" id="wineryname" class="txt" /></td>
                 </tr>
 				<!-- Table Row 3 -->
                 <tr>
-                    <td width="160" height="40" bgcolor="#CED8F6"><strong>&nbsp;Region</strong></td>
-                    <td height="40" bgcolor="#CED8F6">
+                    <td bgcolor="#D8CEF6"><strong>3.&nbsp;Region</strong></td>
+                    <td bgcolor="#F2EFFB">
                     <select name="region" id="region">
-						<option value="0" selected="selected">- Select Region -</option>
+						<option value="0" selected="selected"> Select Region </option>
                         <?php
                             while($row = mysql_fetch_row($regions)) 
 							{
@@ -88,10 +84,10 @@
                 </tr>
 				<!-- Table Row 4 -->
                 <tr>
-                    <td width="160" height="40"><strong>&nbsp;Grape Variety</strong></td>
-                    <td height="40">
+                    <td><strong>4.&nbsp;Grape Variety</strong></td>
+                    <td>
                     <select name="grapeVariety" id="grapeVariety">
-                        <option value="0" selected="selected">- Select value -</option>
+                        <option value="0" selected="selected"> Select Variery </option>
                         <?php
                             while($row = mysql_fetch_row($varieties)) 
 							{
@@ -102,11 +98,11 @@
                 </tr>
 				<!-- Table Row 5 -->
                 <tr>
-                    <td width="160" height="40" bgcolor="#CED8F6"><strong>&nbsp;Range of Years</strong></td>
-                    <td height="40" bgcolor="#CED8F6">
+                    <td bgcolor="#D8CEF6"><strong>5.&nbsp;Range of Years</strong></td>
+                    <td bgcolor="#F2EFFB">
 					From
                     <select name="yearFrom" id="yearFrom">
-                        <option value="0" selected="selected">- Select value -</option>
+                        <option value="0" selected="selected"> Select Year </option>
                         <?php
                             for($i=0; $i<count($yearArray); $i++) 
 							{
@@ -116,7 +112,7 @@
                     </select>
                     to
                     <select name="yearTo" id="yearTo">
-                        <option value="0" selected="selected">- Select value -</option>
+                        <option value="0" selected="selected"> Select Year </option>
                         <?php
                             for($i=0; $i<count($yearArray); $i++) 
 							{
@@ -128,32 +124,30 @@
                 </tr>
 				<!-- Table Row 6 -->
                 <tr>
-                    <td width="160" height="40"><strong>&nbsp;Min Number in Stock</strong></td>
-                    <td height="40"><input type="text" name="min_num_instock" id="min_num_instock" class="number" /></td>
+                    <td><strong>6.&nbsp;Min Number in Stock</strong></td>
+                    <td><input type="text" name="min_num_instock" id="min_num_instock" class="number" /></td>
                 </tr>
 				<!-- Table Row 7 -->
                 <tr>
-                    <td width="160" height="40" bgcolor="#CED8F6"><strong>&nbsp;Min Number Ordered</strong></td>
-                    <td height="40" bgcolor="#CED8F6"><input type="text" name="min_num_ordered" id="min_num_ordered" class="number" /></td>
+                    <td bgcolor="#D8CEF6"><strong>7.&nbsp;Min Number Ordered</strong></td>
+                    <td bgcolor="#F2EFFB"><input type="text" name="min_num_ordered" id="min_num_ordered" class="number" /></td>
                 </tr>
 				<!-- Table Row 8 -->
                 <tr>
-                    <td height="40"><strong>&nbsp;Cost Range</strong></td>
-                    <td height="40"> (MIN)$<input type="text" name="min_cost" id="min_cost" class="number" /> (MAX)$<input type="text" name="max_cost" id="max_cost" class="number" /></td>
+                    <td><strong>8.&nbsp;Cost Range</strong></td>
+                    <td> (MIN)$<input type="text" name="min_cost" id="min_cost" class="number" /> (MAX)$<input type="text" name="max_cost" id="max_cost" class="number" /></td>
                 </tr>
 				<!-- Table Row 9 "Button" -->
                 <tr>
-                    <td height="40" colspan="2" align="right" bgcolor="#CED8F6"><input type="submit" name="btnSubmit" id="btnSubmit" value="Search" />
+                    <td colspan="2" align="right" bgcolor="#F8E0F7"><input type="submit" name="btnSubmit" id="btnSubmit" value="Search" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="reset" name="btnRst" id="btnRst" value="Reset form" /></td>
                 </tr>
             </table>
             </form>
-        </div>
+        </div>       
         
-        <div class="vgap"></div>
-        
-        <div id="footer">
+        <div>
             &copy; Ye SHEN s3339615
         </div>
     </div>
