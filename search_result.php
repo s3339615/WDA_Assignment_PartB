@@ -5,17 +5,17 @@
 </head>
 
 <?php
-    $criteria = $get["criteria"];//all = no criteria; some = some criterias
-    $nameOfWine = $get["nameOfWine"];
-    $nameOfWinery = $get["nameOfWinery"];
-    $region = $get["region"];
-    $grapeVariety = $get["grapeVariety"];
-    $yearFrom = $get["yearFrom"];
-    $yearTo = $get["yearTo"];
-    $num_of_min_in_stock = $get['num_of_min_in_stock'];
-    $num_of_min_order = $get['num_of_min_order'];
-    $min_cost = $get["min_cost"];
-    $max_cost = $get["max_cost"];
+    $criteria = $_GET["criteria"];//all = no criteria; some = some criterias
+    $winename = $_GET["winename"];
+    $wineryname = $_GET["wineryname"];
+    $region = $_GET["region"];
+    $grapeVariety = $_GET["grapeVariety"];
+    $yearFrom = $_GET["yearFrom"];
+    $yearTo = $_GET["yearTo"];
+    $min_num_instock = $_GET['min_num_instock'];
+    $min_num_ordered = $_GET['min_num_ordered'];
+    $min_cost = $_GET["min_cost"];
+    $max_cost = $_GET["max_cost"];
     
     $query = 'SELECT DISTINCT wine.wine_id, wine_name, year, winery_name, region_name, cost, on_hand, SUM(qty) qty, SUM(price)
               FROM wine, winery, region, inventory, items, wine_variety
@@ -36,15 +36,15 @@
         /*
             Piece together the SQL statement
         */
-        if($nameOfWine != '') 
+        if($winename != '') 
 		{
-            $nameOfWine = str_replace("'", "''", $nameOfWine);
-            $query .= " AND wine.wine_name LIKE '%$nameOfWine%'";
+            $winename = str_replace("'", "''", $winename);
+            $query .= " AND wine.wine_name LIKE '%$winename%'";
         }
-        if($nameOfWinery != '') 
+        if($wineryname != '') 
 		{
-            $nameOfWinery = str_replace("'", "''", $nameOfWinery);
-            $query .= " AND winery_name LIKE '%$nameOfWinery%'";
+            $wineryname = str_replace("'", "''", $wineryname);
+            $query .= " AND winery_name LIKE '%$wineryname%'";
         }
         if($region != 1) 
 		{
@@ -64,9 +64,9 @@
 		{
             $query .= " AND year <= $yearTo";
         }
-        if($num_of_min_in_stock != 0) 
+        if($min_num_instock != 0) 
 		{
-            $query .= " AND on_hand >= $num_of_min_in_stock";
+            $query .= " AND on_hand >= $min_num_instock";
         }
         if($min_cost != 0) 
 		{
@@ -76,10 +76,10 @@
 		{
             $query .= " AND cost <= $max_cost";
         }
-        if($num_of_min_order != 0) 
+        if($min_num_ordered != 0) 
 		{
             $query .= " GROUP BY items.wine_id
-                        HAVING qty >= $num_of_min_order
+                        HAVING qty >= $min_num_ordered
                         ORDER BY wine_name, year LIMIT 200";
         }
         else $query .= ' GROUP BY items.wine_id
