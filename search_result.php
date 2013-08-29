@@ -156,7 +156,7 @@
 				?>
 				<tr>
 					<td><?php echo $row[1]; ?></td>
-					<td style="line-height: 16px">
+					<td>
 					<?php
 						$query = "SELECT variety FROM wine_variety, grape_variety
 								  WHERE wine_variety.wine_id = $row[0] AND
