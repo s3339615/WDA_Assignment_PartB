@@ -58,22 +58,21 @@
             <table>
 				<!-- Table Row 1 -->
                 <tr>
-                    <td bgcolor="#D8CEF6"><strong>1.&nbsp;Wine Name</strong></td>
+                    <td bgcolor="#D8CEF6"><b>1.&nbsp;Wine Name</b></td>
                     <td bgcolor="#F2EFFB">
-                    <input type="text" name="winename" id="winename" class="txt" /></td>
+                    <input type="text" name="winename" id="winename"/></td>
                 </tr>
 				<!-- Table Row 2 -->
                 <tr>
-                    <td><strong>2.&nbsp;Winery Name</strong></td>
+                    <td><b>2.&nbsp;Winery Name</b></td>
                     <td>
-                    <input type="text" name="wineryname" id="wineryname" class="txt" /></td>
+                    <input type="text" name="wineryname" id="wineryname"/></td>
                 </tr>
 				<!-- Table Row 3 -->
                 <tr>
-                    <td bgcolor="#D8CEF6"><strong>3.&nbsp;Region</strong></td>
+                    <td bgcolor="#D8CEF6"><b>3.&nbsp;Region</b></td>
                     <td bgcolor="#F2EFFB">
                     <select name="region" id="region">
-						<option value="0" selected="selected"> Select Region </option>
                         <?php
                             while($row = mysql_fetch_row($regions)) 
 							{
@@ -84,10 +83,10 @@
                 </tr>
 				<!-- Table Row 4 -->
                 <tr>
-                    <td><strong>4.&nbsp;Grape Variety</strong></td>
+                    <td><b>4.&nbsp;Grape Variety</b></td>
                     <td>
                     <select name="grapeVariety" id="grapeVariety">
-                        <option value="0" selected="selected"> Select Variery </option>
+                        <option value="0" selected="selected"> All Variery </option>
                         <?php
                             while($row = mysql_fetch_row($varieties)) 
 							{
@@ -98,7 +97,7 @@
                 </tr>
 				<!-- Table Row 5 -->
                 <tr>
-                    <td bgcolor="#D8CEF6"><strong>5.&nbsp;Range of Years</strong></td>
+                    <td bgcolor="#D8CEF6"><b>5.&nbsp;Range of Years</b></td>
                     <td bgcolor="#F2EFFB">
 					From
                     <select name="yearFrom" id="yearFrom">
@@ -124,24 +123,22 @@
                 </tr>
 				<!-- Table Row 6 -->
                 <tr>
-                    <td><strong>6.&nbsp;Min Number in Stock</strong></td>
-                    <td><input type="text" name="min_num_instock" id="min_num_instock" class="number" /></td>
+                    <td><b>6.&nbsp;Minimum Number of wines in Stock</b></td>
+                    <td><input type="text" name="min_num_instock" id="min_num_instock"/></td>
                 </tr>
 				<!-- Table Row 7 -->
                 <tr>
-                    <td bgcolor="#D8CEF6"><strong>7.&nbsp;Min Number Ordered</strong></td>
-                    <td bgcolor="#F2EFFB"><input type="text" name="min_num_ordered" id="min_num_ordered" class="number" /></td>
+                    <td bgcolor="#D8CEF6"><b>7.&nbsp;Minimum Number of wines Ordered</b></td>
+                    <td bgcolor="#F2EFFB"><input type="text" name="min_num_ordered" id="min_num_ordered"/></td>
                 </tr>
 				<!-- Table Row 8 -->
                 <tr>
-                    <td><strong>8.&nbsp;Cost Range</strong></td>
-                    <td> (MIN)$<input type="text" name="min_cost" id="min_cost" class="number" /> (MAX)$<input type="text" name="max_cost" id="max_cost" class="number" /></td>
+                    <td><b>8.&nbsp;Dollar Cost Range</b></td>
+                    <td> (MIN)$<input type="text" name="min_cost" id="min_cost" class="number" /> (MAX)$<input type="text" name="max_cost" id="max_cost"/></td>
                 </tr>
 				<!-- Table Row 9 "Button" -->
                 <tr>
-                    <td colspan="2" align="right" bgcolor="#F8E0F7"><input type="submit" name="btnSubmit" id="btnSubmit" value="Search" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="reset" name="btnRst" id="btnRst" value="Reset form" /></td>
+                    <td colspan="2" align="right" bgcolor="#F8E0F7"><input type="submit" name="btnSubmit" id="btnSubmit" value="Search" /></td>
                 </tr>
             </table>
             </form>
@@ -150,6 +147,5 @@
 </body>
 <?php
     mysql_close($dbconn);
-    echo error_get_last();
 ?>
 </html>
